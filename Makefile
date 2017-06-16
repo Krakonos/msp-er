@@ -6,17 +6,17 @@ OBJS=main.o
 
 all: main.elf size
 
-main.elf: $(OBJS) 
+main.elf: $(OBJS) program.h
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -fr *.elf $(OBJS) *.o
+	rm -fr *.elf $(OBJS) *.o main.prog
 
 size:
-	msp430-size *.elf
+	msp430-size --format=SysV *.elf
 
 dis:
 	msp430-objdump -d main.elf | less

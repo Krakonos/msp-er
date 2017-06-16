@@ -10,6 +10,9 @@
 #include <msp430.h>
 #include <legacymsp430.h>
 
+#define __INFOC __attribute__((section(".infoc")))
+#define __INFOD __attribute__((section(".infod")))
+
 #include "program.h"
 
 
@@ -25,8 +28,8 @@ int delay = 0;
 /* Setup parameters */
 int info[] INFO = {0,0,0,0,1};
 #define DOFF 3
-int *_brightness = &info[DOFF];
-int *_speed = &info[DOFF+1];
+int * const _brightness __INFOD = &info[DOFF];
+int * const _speed __INFOD = &info[DOFF+1];
 
 int brightness;
 int speed;
@@ -164,8 +167,8 @@ int morse() {
 }
 
 
-int (*programs[])() = { shine, knightrider, running_doubles, morse, braille };
-int prg_skip[] = { 0xffff, 3, 1, 4, 5 };
+int (* const programs[])() __INFOC = { shine, knightrider, running_doubles, morse, braille };
+const int prg_skip[] __INFOD = { 0xffff, 3, 1, 4, 5 };
 int program = 0;
 int mode = 0;
 int setup_mode = 0;

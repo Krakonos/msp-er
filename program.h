@@ -64,15 +64,15 @@
 
 
 
-int prg1[] = {
+const int prg1[] __INFOC = {
 		~3, ~(3 << 1), ~(3 << 2), ~(3 << 3), ~(3 << 4), ~(3 << 5), ~(3 << 6), ~(3 << 7), ~((3 << 8) + 1)
 };
 
-char prg2[] = {
+const char prg2[] __INFOC = {
 		MO_H, MO_E, MO_L, MO_L, MO_O, MO_W, MO_O, MO_R, MO_L, MO_D
 };
 
-int prg3[] = {
+const int prg3[] __INFOC = {
 		BR_K, BR_R, BR_A, BR_K, BR_O, BR_N, BR_O, BR_S
 };
 
